@@ -15,7 +15,7 @@ const Jobs = () => {
         </h1>
       </div>
       <div className="grid grid-rows-1 lg:grid-cols-3">
-        {allJobs.map((job) => (
+        {allJobs?.map((job) => (
           <JobsCard key={job?._id} job={job} />
         ))}
       </div>

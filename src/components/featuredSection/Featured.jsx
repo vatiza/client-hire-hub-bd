@@ -20,7 +20,7 @@ const Featured = () => {
         ))}
       </div>
       <div className="text-center">
-        <Link className="btn btn-link btn-lg" to="/">
+        <Link className="btn btn-link btn-lg" to="/jobs">
           View All
         </Link>
       </div>
