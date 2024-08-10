@@ -7,7 +7,6 @@ const JobsCard = ({ job }) => {
       <div className="card bg-base-100 m-2 shadow-xl ">
         <div className="card-body">
           <h2 className="card-title">{job_title}</h2>
-
           <p>
             <span className="text-violet-600 font-semibold me-3 bg-violet-300  rounded-sm p-1">
               {" "}
