@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import getJobsPosts from "../../hooks/getJobsPosts";
 import JobsCard from "../shared/jobsCard/JobsCard";
 
@@ -17,6 +18,11 @@ const Featured = () => {
         {featuredJobs?.map((job) => (
           <JobsCard key={job?._id} job={job} />
         ))}
+      </div>
+      <div className="text-center">
+        <Link className="btn btn-link btn-lg" to="/">
+          View All
+        </Link>
       </div>
     </div>
   );
