@@ -1,10 +1,11 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/shared/navbar/Navbar";
 
-const MainLayouts = ({ children }) => {
+const MainLayouts = () => {
   return (
-    <div>
+    <div className="lg:mx-12">
       <Navbar />
-      {children}
+      <Outlet />
     </div>
   );
 };
