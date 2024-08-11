@@ -4,7 +4,7 @@ const TopCompanies = () => {
   return (
     <>
       <div className="text-center my-4">
-        <h1>Top Companies Hiring Now</h1>
+        <h1>Top Companies Hiring Company</h1>
 
         <div className="flex gap-5 lg:gap-12 justify-center mt-3">
           <img

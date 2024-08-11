@@ -6,6 +6,7 @@ import JobDetails from "../pages/jobs/JobDetails";
 import Signin from "../pages/account/signin/Signin";
 import NotFound from "../pages/notfoundpage/NotFound";
 import SignUp from "../pages/account/signup/SignUp";
+import Contactus from "../components/contactus/Contactus";
 
 export const router = createBrowserRouter([
   {
@@ -34,8 +35,13 @@ export const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp />,
       },
+      {
+        path: "/contact",
+        element: <Contactus />,
+      },
     ],
   },
+  // ----------404 page--------------
   {
     path: "*",
     element: <NotFound />,
