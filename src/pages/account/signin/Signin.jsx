@@ -1,16 +1,17 @@
 import Lottie from "lottie-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import loginSVG from "../../../assets/svg/login.json";
 import SocialSigin from "../socialsignin/SocialSigin";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
 
 const Signin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const email = data.email;
+    const pass = data.pass;
   };
   return (
     <div className="lg:mx-12 mt-8 p-4">
@@ -30,7 +31,7 @@ const Signin = () => {
                 <input
                   type="email"
                   placeholder="email"
-                  className="input input-bordered"
+                  className="input input-bordered "
                   {...register("email", { required: true })}
                 />
               </div>
@@ -39,13 +40,14 @@ const Signin = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <div className="relative">
+                <div className="relative ">
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="password"
-                    className="input input-bordered w-full pr-12" // Adjust padding-right to make space for the text
+                    className="input input-bordered w-full pr-12"
                     {...register("pass", { required: true })}
                   />
+
                   <p
                     className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
                     onClick={() => {
