@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import Jobs from "../pages/jobs/Jobs";
 import JobDetails from "../pages/jobs/JobDetails";
 import Signin from "../pages/account/signin/Signin";
+import NotFound from "../pages/notfoundpage/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -29,5 +30,9 @@ export const router = createBrowserRouter([
         element: <Signin />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);

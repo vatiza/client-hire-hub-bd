@@ -1,10 +1,9 @@
-
+import { Link } from "react-router-dom";
+import SocialSigin from "../socialsignin/SocialSigin";
 import Lottie from "lottie-react";
 import loginSVG from "../../../assets/svg/login.json";
-import SocialSigin from "../socialsignin/SocialSigin";
-import { Link } from "react-router-dom";
 
-const Signin = () => {
+const SignUp = () => {
   return (
     <div className="lg:mx-12 mt-8 p-4">
       <div className="hero shrink-0 shadow-2xl ">
@@ -50,9 +49,9 @@ const Signin = () => {
               </div>
             </form>
             <p>
-              Don't have an account?{" "}
+              Allready have an account?{" "}
               <Link to="/signup" className="btn-link">
-                Please Register Now
+                Please Login
               </Link>
             </p>
             <div className="divider">Or sign In with Google</div>
@@ -66,4 +65,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default SignUp;
