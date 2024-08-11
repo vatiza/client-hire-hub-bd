@@ -5,6 +5,7 @@ import Jobs from "../pages/jobs/Jobs";
 import JobDetails from "../pages/jobs/JobDetails";
 import Signin from "../pages/account/signin/Signin";
 import NotFound from "../pages/notfoundpage/NotFound";
+import SignUp from "../pages/account/signup/SignUp";
 
 export const router = createBrowserRouter([
   {
@@ -26,8 +27,12 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:7000/jobs/${params.id}`),
       },
       {
-        path: "/singin",
+        path: "/signin",
         element: <Signin />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
     ],
   },

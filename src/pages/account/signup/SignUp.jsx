@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import SocialSigin from "../socialsignin/SocialSigin";
 import Lottie from "lottie-react";
-import loginSVG from "../../../assets/svg/login.json";
+import signupimg from "../../../assets/svg/signup.json";
 
 const SignUp = () => {
   return (
@@ -10,10 +10,11 @@ const SignUp = () => {
         <div className="hero-content  lg:flex-row-reverse">
           <Lottie
             className="max-w-sm rounded-lg hidden lg:block "
-            animationData={loginSVG}
+            animationData={signupimg}
+            loop={true}
           />
           <div>
-            <h1 className="text-5xl text-center font-bold">Login Now</h1>
+            <h1 className="text-5xl text-center font-bold">Sign Up</h1>
             <form className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -50,7 +51,7 @@ const SignUp = () => {
             </form>
             <p>
               Allready have an account?{" "}
-              <Link to="/signup" className="btn-link">
+              <Link to="/signin" className="btn-link">
                 Please Login
               </Link>
             </p>
