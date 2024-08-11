@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Link } from "react-router-dom";
 
 const JobsCard = ({ job }) => {
@@ -9,6 +10,7 @@ const JobsCard = ({ job }) => {
     company_img,
     employment_type,
     salary,
+    deadline,
   } = job;
   return (
     <div>
@@ -55,6 +57,7 @@ const JobsCard = ({ job }) => {
 
                 {location}
               </p>{" "}
+              <p className="text-rose-600"> Deadline: {moment(deadline).format("MMM Do YY")}</p>
             </div>
           </div>
           <div className="card-actions justify-between my-3">
