@@ -21,7 +21,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 sticky top-0 z-10">
+    <div className="navbar bg-base-100 sticky top-0 z-10 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,8 +54,8 @@ const Navbar = () => {
         <div className=" hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
-        <Link to="/singin" className="btn">
-          Signin
+        <Link to="/signin" className="btn btn-outline border-violet-600 btn-sm">
+          Sign In
         </Link>
       </div>
     </div>

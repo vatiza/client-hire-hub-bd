@@ -16,7 +16,22 @@ const SignUp = () => {
           <div>
             <h1 className="text-5xl text-center font-bold">Sign Up</h1>
             <form className="card-body">
-              <div className="form-control">
+
+            <div>
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+
+
+
+              <div>
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
@@ -27,7 +42,7 @@ const SignUp = () => {
                   required
                 />
               </div>
-              <div className="form-control">
+              <div>
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
