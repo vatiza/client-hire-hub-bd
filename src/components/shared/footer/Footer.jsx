@@ -1,8 +1,6 @@
-import React from "react";
-
 const Footer = () => {
   return (
-    <footer className="footer bg-base-200 text-base-content p-10">
+    <footer className="footer bg-base-200 text-base-content p-10 mt-10">
       <nav>
         <h6 className="footer-title">Services</h6>
         <a className="link link-hover">Branding</a>
@@ -35,7 +33,9 @@ const Footer = () => {
               placeholder="username@site.com"
               className="input input-bordered join-item "
             />
-            <button className="btn btn-primary join-item">Subscribe</button>
+            <button className="btn bg-violet-700 hover:bg-violet-800 text-white join-item">
+              Subscribe
+            </button>
           </div>
         </fieldset>
       </form>

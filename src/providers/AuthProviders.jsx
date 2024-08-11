@@ -3,6 +3,7 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -19,6 +20,11 @@ const AuthProviders = ({ children }) => {
   const createNewAcc = (email, pass) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, pass);
+  };
+
+  const loginWithEmailPass = (email, pass) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, pass);
   };
   const googleLogin = () => {
     setLoading(true);
@@ -44,6 +50,7 @@ const AuthProviders = ({ children }) => {
     user,
     logoutUser,
     createNewAcc,
+    loginWithEmailPass,
     googleLogin,
   };
   return (

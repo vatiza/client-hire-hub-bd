@@ -4,14 +4,19 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import loginSVG from "../../../assets/svg/login.json";
 import SocialSigin from "../socialsignin/SocialSigin";
+import useAuth from "../../../hooks/useAuth";
 
 const Signin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { register, handleSubmit } = useForm();
+  const { loginWithEmailPass } = useAuth();
 
   const onSubmit = (data) => {
     const email = data.email;
     const pass = data.pass;
+    loginWithEmailPass(email, pass).then((result) => {
+      console.log(result.user);
+    });
   };
   return (
     <div className="lg:mx-12 mt-8 p-4">
