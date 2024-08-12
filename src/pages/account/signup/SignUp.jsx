@@ -1,9 +1,20 @@
-import { Link } from "react-router-dom";
-import SocialSigin from "../socialsignin/SocialSigin";
 import Lottie from "lottie-react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import signupimg from "../../../assets/svg/signup.json";
+import useAuth from "../../../hooks/useAuth";
+import SocialSigin from "../socialsignin/SocialSigin";
 
 const SignUp = () => {
+  const { createNewAcc } = useAuth();
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    const name = data.name;
+    const email = data.email;
+    const pass = data.pass;
+    console.log(name, email, pass);
+  };
+
   return (
     <div className="lg:mx-12 mt-8 p-4">
       <div className="hero shrink-0 shadow-2xl ">
@@ -15,9 +26,8 @@ const SignUp = () => {
           />
           <div>
             <h1 className="text-5xl text-center font-bold">Sign Up</h1>
-            <form className="card-body">
-
-            <div>
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+              <div>
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
@@ -25,11 +35,9 @@ const SignUp = () => {
                   type="text"
                   placeholder="name"
                   className="input input-bordered"
-                  required
+                  {...register("name", { required: true })}
                 />
               </div>
-
-
 
               <div>
                 <label className="label">
@@ -39,7 +47,7 @@ const SignUp = () => {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
-                  required
+                  {...register("email", { required: true })}
                 />
               </div>
               <div>
@@ -50,7 +58,7 @@ const SignUp = () => {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
-                  required
+                  {...register("pass", { required: true })}
                 />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
