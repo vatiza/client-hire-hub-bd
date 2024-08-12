@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginSVG from "../../../assets/svg/login.json";
 import SocialSigin from "../socialsignin/SocialSigin";
 import useAuth from "../../../hooks/useAuth";
@@ -11,11 +11,16 @@ const Signin = () => {
   const { register, handleSubmit } = useForm();
   const { loginWithEmailPass } = useAuth();
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const onSubmit = (data) => {
     const email = data.email;
     const pass = data.pass;
     loginWithEmailPass(email, pass).then((result) => {
       console.log(result.user);
+      navigate(from, { replace: true });
     });
   };
   return (
