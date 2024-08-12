@@ -7,6 +7,8 @@ import Signin from "../pages/account/signin/Signin";
 import NotFound from "../pages/notfoundpage/NotFound";
 import SignUp from "../pages/account/signup/SignUp";
 import Contactus from "../components/contactus/Contactus";
+import Corporate from "../pages/corporate/Corporate";
+import ProtectRoute from "./ProtectRoute";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +40,15 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contactus />,
+      },
+      //-------------- Login User Routes--------------------
+      {
+        path: "/corporate",
+        element: (
+          <ProtectRoute>
+            <Corporate />
+          </ProtectRoute>
+        ),
       },
     ],
   },
