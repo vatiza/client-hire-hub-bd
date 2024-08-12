@@ -4,15 +4,31 @@ import { Link } from "react-router-dom";
 import signupimg from "../../../assets/svg/signup.json";
 import useAuth from "../../../hooks/useAuth";
 import SocialSigin from "../socialsignin/SocialSigin";
-
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 const SignUp = () => {
   const { createNewAcc } = useAuth();
   const { register, handleSubmit } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
   const onSubmit = (data) => {
     const name = data.name;
     const email = data.email;
     const pass = data.pass;
-    console.log(name, email, pass);
+    createNewAcc(email, pass)
+      .then((result) => {
+        setIsLoading(true);
+        const loadingToastId = toast.loading("process...");
+        console.log(result.user);
+        toast.dismiss(loadingToastId);
+
+        toast.success("Success!");
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.log(e.message);
+
+        toast.error(`${e.message}`);
+      });
   };
 
   return (
@@ -68,7 +84,7 @@ const SignUp = () => {
               </div>
               <div className="form-control mt-6">
                 <button className="btn bg-violet-600 text-white hover:bg-violet-700">
-                  Login
+                  Sign Up
                 </button>
               </div>
             </form>
@@ -85,6 +101,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };
