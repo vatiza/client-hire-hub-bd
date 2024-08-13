@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayouts from "../layouts/Main";
-import Home from "../pages/home/Home";
-import Jobs from "../pages/jobs/Jobs";
-import JobDetails from "../pages/jobs/JobDetails";
-import Signin from "../pages/account/signin/Signin";
-import NotFound from "../pages/notfoundpage/NotFound";
-import SignUp from "../pages/account/signup/SignUp";
 import Contactus from "../components/contactus/Contactus";
+import MainLayouts from "../layouts/Main";
+import Signin from "../pages/account/signin/Signin";
+import SignUp from "../pages/account/signup/SignUp";
 import Corporate from "../pages/corporate/Corporate";
-import ProtectRoute from "./ProtectRoute";
+import Home from "../pages/home/Home";
+import JobDetails from "../pages/jobs/JobDetails";
+import Jobs from "../pages/jobs/Jobs";
+import NotFound from "../pages/notfoundpage/NotFound";
+import CorporateDetails from "../pages/corporate/CorporateDetails";
 
 export const router = createBrowserRouter([
   {
@@ -44,11 +44,13 @@ export const router = createBrowserRouter([
       //-------------- Login User Routes--------------------
       {
         path: "/corporate",
-        element: (
-          <ProtectRoute>
-            <Corporate />
-          </ProtectRoute>
-        ),
+        element: <Corporate />,
+      },
+      {
+        path: "/corporate/:id",
+        element: <CorporateDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:7000/corporate/${params.id}`),
       },
     ],
   },
