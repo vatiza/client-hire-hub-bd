@@ -4,7 +4,7 @@ const CorporateCard = ({ corporate }) => {
   const { name, company_img, address, revenue, _id, industry } = corporate;
   return (
     <div>
-      <div className="card bg-base-100 m-2 w-96 p-4 shadow-xl ">
+      <div className="card bg-base-100 m-2 w-96 p-3 shadow-xl  border border-transparent hover:border-violet-700 transition-all duration-300 ">
         <div className="card-body">
           <div className="avatar">
             <div className="w-8 rounded-full">

@@ -14,7 +14,7 @@ const JobsCard = ({ job }) => {
   } = job;
   return (
     <div>
-      <div className="card bg-base-100 m-2 shadow-xl ">
+      <div className="card bg-base-100 m-2 shadow-xl    border border-transparent hover:border-violet-700 transition-all duration-300">
         <div className="card-body">
           <h2 className="card-title">{job_title}</h2>
           <p>
@@ -57,7 +57,10 @@ const JobsCard = ({ job }) => {
 
                 {location}
               </p>{" "}
-              <p className="text-rose-600"> Deadline: {moment(deadline).format("MMM Do YY")}</p>
+              <p className="text-rose-600">
+                {" "}
+                Deadline: {moment(deadline).format("MMM Do YY")}
+              </p>
             </div>
           </div>
           <div className="card-actions justify-between my-3">

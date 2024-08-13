@@ -9,6 +9,7 @@ import JobDetails from "../pages/jobs/JobDetails";
 import Jobs from "../pages/jobs/Jobs";
 import NotFound from "../pages/notfoundpage/NotFound";
 import CorporateDetails from "../pages/corporate/CorporateDetails";
+import JobSekkers from "../pages/jobSekkers/JobSekkers";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
         element: <CorporateDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:7000/corporate/${params.id}`),
+      },
+      {
+        path: "/jobsekkers",
+        element: <JobSekkers />,
       },
     ],
   },

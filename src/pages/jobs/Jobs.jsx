@@ -1,7 +1,6 @@
-import React from "react";
-import getJobsPosts from "../../hooks/getJobsPosts";
 import JobsPageHeader from "../../components/header/JobsPageHeader";
 import JobsCard from "../../components/shared/jobsCard/JobsCard";
+import getJobsPosts from "../../hooks/getJobsPosts";
 
 const Jobs = () => {
   const [allJobs] = getJobsPosts();
@@ -14,6 +13,7 @@ const Jobs = () => {
           All Jobs
         </h1>
       </div>
+
       <div className="grid grid-rows-1 lg:grid-cols-3">
         {allJobs?.map((job) => (
           <JobsCard key={job?._id} job={job} />
