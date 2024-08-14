@@ -11,7 +11,7 @@ const JobSekkers = () => {
       <h1 className="text-3xl font-semibold xl:text-5xl lg:text-3xl mb-3 text-center">
         Land your dream
       </h1>
-      <div className="grid grid-flow-row lg:grid-cols-3 m-2">
+      <div className="grid grid-flow-row lg:grid-cols-3 gap-4 m-4 ">
         {jobseekers.map((jobseeker) => (
           <JobSeekersCard key={jobseeker._id} jobseeker={jobseeker} />
         ))}
