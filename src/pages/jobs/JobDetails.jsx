@@ -1,7 +1,9 @@
 import moment from "moment";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const JobDetails = () => {
+  const { user } = useAuth();
   const jobDetails = useLoaderData();
   const {
     job_title,
@@ -37,9 +39,49 @@ const JobDetails = () => {
           </p>
 
           <div className="card-actions justify-between my-3">
-            <button className="btn  bg-violet-600 hover:bg-violet-700 text-white">
-              Apply Now
-            </button>
+            {user ? (
+              <>
+                <Link
+                  to="/jobapply"
+                  className="btn  bg-violet-600 hover:bg-violet-700 text-white"
+                >
+                  Apply Now
+                </Link>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() =>
+                    document.getElementById("my_modal_5").showModal()
+                  }
+                  className="btn  bg-violet-600 hover:bg-violet-700 text-white"
+                >
+                  Apply Now
+                </button>
+                <dialog
+                  id="my_modal_5"
+                  className="modal modal-bottom sm:modal-middle"
+                >
+                  <div className="modal-box">
+                    <h3 className="font-bold text-lg">Sign In Required!</h3>
+                    <p className="py-4">
+                      Please sign in to apply for this job.
+                    </p>
+
+                    <Link className="btn btn-outline" to="/signin">
+                      Sign in
+                    </Link>
+
+                    <div className="modal-action">
+                      <form method="dialog">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button className="btn">Close</button>
+                      </form>
+                    </div>
+                  </div>
+                </dialog>
+              </>
+            )}
           </div>
           <div className="divider"></div>
           <div className="grid grid-flow-row lg:grid-cols-3 ">

@@ -10,6 +10,8 @@ import Jobs from "../pages/jobs/Jobs";
 import NotFound from "../pages/notfoundpage/NotFound";
 import CorporateDetails from "../pages/corporate/CorporateDetails";
 import JobSekkers from "../pages/jobSekkers/JobSekkers";
+import JobApply from "../pages/jobapply/JobApply";
+import ProtectRoute from "./ProtectRoute";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +58,14 @@ export const router = createBrowserRouter([
       {
         path: "/jobsekkers",
         element: <JobSekkers />,
+      },
+      {
+        path: "/jobapply",
+        element: (
+          <ProtectRoute>
+            <JobApply />
+          </ProtectRoute>
+        ),
       },
     ],
   },
