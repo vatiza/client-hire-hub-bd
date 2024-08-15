@@ -18,7 +18,7 @@ const JobApply = () => {
         <h1 className="text-xl font-semibold">{job_title}</h1>
         <p>{location}</p>
       </div>
-      <div className="border mt-3">
+      <div className="border mt-3 p-4">
         <div>
           <img src="" alt="" />
         </div>

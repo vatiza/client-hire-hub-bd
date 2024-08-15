@@ -12,6 +12,8 @@ import CorporateDetails from "../pages/corporate/CorporateDetails";
 import JobSekkers from "../pages/jobSekkers/JobSekkers";
 import JobApply from "../pages/jobapply/JobApply";
 import ProtectRoute from "./ProtectRoute";
+import ProfileLayouts from "../layouts/ProfileLayouts";
+import Profile from "../pages/profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +70,18 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:7000/jobs/${params.id}`),
+      },
+    ],
+  },
+
+  // ------------Profile------------
+  {
+    path: "/profile",
+    element: <ProfileLayouts />,
+    children: [
+      {
+        path: "home",
+        element: <Profile />,
       },
     ],
   },

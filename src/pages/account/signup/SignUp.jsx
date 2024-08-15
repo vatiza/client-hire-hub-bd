@@ -2,36 +2,66 @@ import Lottie from "lottie-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import signupimg from "../../../assets/svg/signup.json";
 import useAuth from "../../../hooks/useAuth";
 import SocialSigin from "../socialsignin/SocialSigin";
+import usePublicAxios from "../../../hooks/usePublicAxios";
+
+const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY;
+
+const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
+
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createNewAcc } = useAuth();
+  const { createNewAcc, updateUserProfile } = useAuth();
+  const axiosPublic = usePublicAxios();
   const { register, handleSubmit } = useForm();
   const [isLoading, setIsLoading] = useState(false);
-  const onSubmit = (data) => {
-    const name = data.name;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    const loadingToastId = toast.loading("process...");
     const email = data.email;
     const pass = data.pass;
-    createNewAcc(email, pass)
-      .then((result) => {
-        setIsLoading(true);
-        const loadingToastId = toast.loading("process...");
-        console.log(result.user);
-        toast.dismiss(loadingToastId);
+    const imageFile = { image: data.image[0] };
+    const res = await axiosPublic.post(img_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
 
-        toast.success("Success!");
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        console.log(e.message);
-
-        toast.error(`${e.message}`);
-      });
+    if (res.data.success) {
+      const name = data.name;
+      const photoUrl = res.data.data.display_url;
+      createNewAcc(email, pass)
+        .then((result) => {
+          updateUserProfile(name, photoUrl)
+            .then(async () => {
+              const userInfo = {
+                name: data.name,
+                email: data.email,
+              };
+              toast.dismiss(loadingToastId);
+              toast.success("Success!");
+              setIsLoading(false);
+              navigate(from, { replace: true });
+            })
+            .catch((e) => {
+              toast.dismiss(loadingToastId);
+              console.log(e.message);
+              toast.error(`${e.message}`);
+            });
+        })
+        .catch((e) => {
+          toast.dismiss(loadingToastId);
+          console.log(e.message);
+          toast.error(`${e.message}`);
+        });
+    }
   };
-
   return (
     <div className="lg:mx-12 mt-8 p-4">
       <div className="hero shrink-0 shadow-2xl ">
@@ -125,6 +155,15 @@ const SignUp = () => {
                   </p>
                 </div>
               </div>
+
+              <div className="label">
+                <span className="label-text">Photo</span>
+              </div>
+              <input
+                type="file"
+                className="file-input file-input-bordered w-72"
+                {...register("image", { required: true })}
+              />
 
               <div className="form-control mt-6">
                 <button className="btn bg-violet-600 text-white hover:bg-violet-700">
