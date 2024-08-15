@@ -14,7 +14,7 @@ const CorporateDetails = () => {
     founded_year,
     description,
   } = corporateDetails;
-  console.log(corporateDetails);
+
   return (
     <div>
       <div className="card bg-base-100 m-2 shadow-xl ">

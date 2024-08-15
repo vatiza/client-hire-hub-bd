@@ -9,7 +9,7 @@ const SocialSigin = () => {
 
   const handleGoogleLogin = () => {
     googleLogin().then((resullt) => {
-      console.log(resullt.user);
+     
       navigate(from, { replace: true });
     });
   };
