@@ -60,12 +60,14 @@ export const router = createBrowserRouter([
         element: <JobSekkers />,
       },
       {
-        path: "/jobapply",
+        path: "/jobapply/:id",
         element: (
           <ProtectRoute>
             <JobApply />
           </ProtectRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:7000/jobs/${params.id}`),
       },
     ],
   },

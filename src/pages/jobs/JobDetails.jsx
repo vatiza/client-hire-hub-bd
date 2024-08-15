@@ -7,6 +7,7 @@ const JobDetails = () => {
   const jobDetails = useLoaderData();
   const {
     job_title,
+    _id,
     company,
     location,
     employment_type,
@@ -42,7 +43,7 @@ const JobDetails = () => {
             {user ? (
               <>
                 <Link
-                  to="/jobapply"
+                  to={`/jobapply/${_id}`}
                   className="btn  bg-violet-600 hover:bg-violet-700 text-white"
                 >
                   Apply Now
@@ -50,36 +51,12 @@ const JobDetails = () => {
               </>
             ) : (
               <>
-                <button
-                  onClick={() =>
-                    document.getElementById("my_modal_5").showModal()
-                  }
+                <Link
+                  to={`/jobapply:/${_id}`}
                   className="btn  bg-violet-600 hover:bg-violet-700 text-white"
                 >
-                  Apply Now
-                </button>
-                <dialog
-                  id="my_modal_5"
-                  className="modal modal-bottom sm:modal-middle"
-                >
-                  <div className="modal-box">
-                    <h3 className="font-bold text-lg">Sign In Required!</h3>
-                    <p className="py-4">
-                      Please sign in to apply for this job.
-                    </p>
-
-                    <Link className="btn btn-outline" to="/signin">
-                      Sign in
-                    </Link>
-
-                    <div className="modal-action">
-                      <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
-                        <button className="btn">Close</button>
-                      </form>
-                    </div>
-                  </div>
-                </dialog>
+                  Sign in to Apply
+                </Link>
               </>
             )}
           </div>

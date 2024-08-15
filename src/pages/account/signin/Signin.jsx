@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginSVG from "../../../assets/svg/login.json";
-import SocialSigin from "../socialsignin/SocialSigin";
 import useAuth from "../../../hooks/useAuth";
+import SocialSigin from "../socialsignin/SocialSigin";
 
 const Signin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,12 +14,11 @@ const Signin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-
+ 
   const onSubmit = (data) => {
     const email = data.email;
     const pass = data.pass;
     loginWithEmailPass(email, pass).then((result) => {
-      console.log(result.user);
       navigate(from, { replace: true });
     });
   };
