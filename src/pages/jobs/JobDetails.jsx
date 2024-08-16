@@ -52,7 +52,7 @@ const JobDetails = () => {
             ) : (
               <>
                 <Link
-                  to={`/jobapply:/${_id}`}
+                  to={`/jobapply/${_id}`}
                   className="btn  bg-violet-600 hover:bg-violet-700 text-white"
                 >
                   Sign in to Apply

@@ -5,8 +5,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import signupimg from "../../../assets/svg/signup.json";
 import useAuth from "../../../hooks/useAuth";
-import SocialSigin from "../socialsignin/SocialSigin";
 import usePublicAxios from "../../../hooks/usePublicAxios";
+import SocialSigin from "../socialsignin/SocialSigin";
 
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY;
 
@@ -46,8 +46,10 @@ const SignUp = () => {
               };
               toast.dismiss(loadingToastId);
               toast.success("Success!");
-              setIsLoading(false);
-              navigate(from, { replace: true });
+              setTimeout(() => {
+                setIsLoading(false);
+                navigate(from, { replace: true });
+              }, 1000);
             })
             .catch((e) => {
               toast.dismiss(loadingToastId);

@@ -13,7 +13,7 @@ const JobApply = () => {
       <h1 className="font-semibold text-center">ONLINE APPLICATION FORM</h1>
       <div className="border bg-base-100 shadow-lg p-4 mt-3 rounded-lg">
         <div className="flex items-center gap-2 ">
-          <img className="w-6 " src={company_img} alt="" />
+          <img className="w-6" src={company_img} alt="" />
           <p>{company}</p>
         </div>
         <h1 className="text-xl font-semibold">{job_title}</h1>
@@ -26,7 +26,7 @@ const JobApply = () => {
               <img src={user?.photoURL} />
             </div>
           </div>
-          <h1 className="text-xl font-semibold  ">{user.displayName}</h1>
+          <h1 className="text-xl font-semibold">{user.displayName}</h1>
           <Link className="ml-auto btn-link">Update CV</Link>
         </div>
 
